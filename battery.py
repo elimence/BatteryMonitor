@@ -31,6 +31,8 @@ class Misc():
 
 
 
+
+
 class Battery_Manager(Misc):
     def __init__(self):
         self.handle     = ''
@@ -44,7 +46,7 @@ class Battery_Manager(Misc):
         self.stat_loc   = {'BATTERY_CHARGING': '%s/AC/online'   %(self.SYS_ROOT),
                             'BATTERY_LEVEL': '%s/BAT0/capacity' %(self.SYS_ROOT)}
 
-    #@classmethod
+    
     def check_ac (self):
         # add code to check if battery is charging
         charging_status = Misc.read_file(self.stat_loc['BATTERY_CHARGING'])
@@ -54,13 +56,13 @@ class Battery_Manager(Misc):
         else:
             return False
 
-    #@classmethod
+
     def check_level (self):
         # add code to check battery level
         battery_level = Misc.read_file(self.stat_loc['BATTERY_LEVEL'])
         return battery_level
 
-    #@classmethod
+    
     def start_alert (self):
         # add code to sound an alarm
         if not self.alert_stat:
@@ -68,7 +70,7 @@ class Battery_Manager(Misc):
             self.handle = Misc.run_in_terminal(command)
             self.alert_stat = True
 
-    #@classmethod
+    
     def stop_alert(self):
         if self.alert_stat:
             self.handle.kill()
